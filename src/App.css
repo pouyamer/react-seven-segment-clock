@@ -1,0 +1,200 @@
+/*define variables*/
+
+*,
+*::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.abcdefg {
+  fill-rule: evenodd;
+  stroke-width: 0.25;
+  stroke-opacity: 1;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+}
+
+a {
+  text-decoration: none;
+}
+a:focus {
+  outline: none;
+}
+ul {
+  list-style: none;
+}
+
+svg {
+  width: 100px;
+  height: 200px;
+}
+
+.AMPM {
+  place-self: end;
+  margin-bottom: 2em;
+  margin-left: 0.2em;
+  font-size: 1em;
+}
+
+.colon {
+  place-self: end;
+  margin-bottom: 10px;
+  font-size: 110px;
+  font-weight: 300;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.time-container {
+  display: flex;
+}
+
+/* settings */
+
+/* #region Hamburger Button */
+.hamburger-toggle {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+
+#hamburger {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+}
+
+#hamburger svg {
+  pointer-events: none;
+}
+#hamburger .line {
+  fill: none;
+  /* stroke: #000000; */
+  stroke-width: 5;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  transform: scale(0.9);
+}
+
+#hamburger .line1 {
+  stroke-dasharray: 60 207;
+}
+#hamburger .line2 {
+  stroke-dasharray: 60 60;
+}
+#hamburger .line3 {
+  stroke-dasharray: 60 207;
+}
+#hamburger.open .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+#hamburger.open .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+  stroke-width: 6;
+}
+#hamburger.open .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+
+/* #endregion */
+
+.settings {
+  position: absolute;
+  height: 100%;
+  /* background-color: hsla(0, 0%, 27%, 0.692); */
+  align-self: start;
+  width: 500px;
+  /* left: -100%; */
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+
+  /* Add the blur to background*/
+}
+
+.settings.open {
+  /* left: 0; */
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.settings h2,
+p,
+label {
+  color: white;
+}
+
+.settings h2 {
+  margin: 0.2em 0;
+}
+
+.settings-section {
+  margin-bottom: 1em;
+}
+
+.settings-container {
+  margin-top: 10em;
+  margin-left: 10em;
+}
+
+@media (max-width: 768px) {
+  .time-container svg {
+    width: 80px;
+    height: 150px;
+  }
+  .colon {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 630px) {
+  .time-container svg {
+    width: 60px;
+    height: 100px;
+  }
+  .colon {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 500px) {
+  .time-container svg {
+    width: 40px;
+    height: 80px;
+  }
+  .colon {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .time-container svg {
+    width: 35px;
+    height: 70px;
+  }
+  .colon {
+    font-size: 30px;
+  }
+}
