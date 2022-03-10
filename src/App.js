@@ -216,7 +216,8 @@ export default App
 
 {
   // TODO: Add rainbow colors functions for font and background
-  // TODO: Add option to light up the led background according to the time : day/night
+  // TODO: Add option to light up the led background
+  //   according to the time : day/night
   // TODO: Add shadows (glow) to segments
   // TODO: Add option to change language
   // TODO: Add a logo to the project
@@ -225,6 +226,8 @@ export default App
   // TODO: Add an option to display the current time in the Title
   //  (change in the useEffect)
   // TODO: scale the reducer into context api
+  // TODO: Change the font color in settings according
+  //  to the Lightness of the background
   //============================================================
   // TODO: Add 24/12h option -- done
   // TODO: Handle the responsive -- done
