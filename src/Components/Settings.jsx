@@ -46,7 +46,6 @@ const Settings = ({ open_state, hslaStringify, bgColor, state, dispatch }) => {
       type: "CHANGE_BLINKING_STATE",
       payload: state
     })
-    console.log(state)
   }
 
   const toggleShowSeconds = state => {
