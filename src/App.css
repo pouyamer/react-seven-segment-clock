@@ -41,6 +41,12 @@ svg {
   height: 200px;
 }
 
+#hamburger,
+input,
+select {
+  cursor: pointer;
+}
+
 .AMPM {
   place-self: end;
   margin-bottom: 2em;
@@ -75,7 +81,6 @@ svg {
 #hamburger {
   background-color: transparent;
   border: none;
-  cursor: pointer;
   display: flex;
   padding: 0;
 }
@@ -124,18 +129,13 @@ svg {
 .settings {
   position: absolute;
   height: 100%;
-  /* background-color: hsla(0, 0%, 27%, 0.692); */
   align-self: start;
   width: 500px;
-  /* left: -100%; */
   transform: translateX(-100%);
   transition: transform 0.5s ease-in-out;
-
-  /* Add the blur to background*/
 }
 
 .settings.open {
-  /* left: 0; */
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
 }

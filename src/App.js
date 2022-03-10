@@ -219,10 +219,12 @@ export default App
   // TODO: Add option to light up the led background according to the time : day/night
   // TODO: Add shadows (glow) to segments
   // TODO: Add option to change language
-  // TODO: Scale the app into React
   // TODO: Add a logo to the project
   // TODO: Make the transformed hamburger button more contrastive
   // TODO: Add a readme file
+  // TODO: Add an option to display the current time in the Title
+  //  (change in the useEffect)
+  // TODO: scale the reducer into context api
   //============================================================
   // TODO: Add 24/12h option -- done
   // TODO: Handle the responsive -- done
@@ -232,4 +234,5 @@ export default App
   // TODO: Slider for HUE -- done
   // FIXME: fix the zeroes in the hours, minutes and seconds -- done
   // TODO: Add Option to change saturation and Lightness -- done
+  // TODO: Scale the app into React -- done
 }
