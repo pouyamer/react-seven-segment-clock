@@ -1,6 +1,7 @@
 import logo from "./logo.svg"
 import "./App.css"
 import { useEffect, useReducer } from "react"
+import reducer from "./reducer"
 
 import SevenSegment from "./Components/SevenSegment"
 import Colon from "./Components/Colon"
@@ -41,116 +42,6 @@ const INITIAL_STATE = {
   colons: {
     on_state: true,
     willBlink: true
-  }
-}
-
-const reducer = (state, action) => {
-  const { type, payload } = action
-  switch (type) {
-    case "SET_TIME":
-      return {
-        ...state,
-        sevenSegment: {
-          ...state.sevenSegment,
-          shownNumbers: payload
-        }
-      }
-
-    case "CHANGE_BLINKING_STATE":
-      return {
-        ...state,
-        colons: {
-          ...state.colons,
-          willBlink: payload
-        }
-      }
-
-    case "CHANGE_SETTINGS_OPACITY":
-      return {
-        ...state,
-        settings: {
-          ...state.settings,
-          opacity: payload
-        }
-      }
-
-    case "CHANGE_SEVEN_SEGMENT_HUE":
-      return {
-        ...state,
-        sevenSegment: {
-          ...state.sevenSegment,
-          color: {
-            ...state.sevenSegment.color,
-            H: payload
-          }
-        }
-      }
-
-    case "CHANGE_SEVEN_SEGMENT_SATURATION":
-      return {
-        ...state,
-        sevenSegment: {
-          ...state.sevenSegment,
-          color: {
-            ...state.sevenSegment.color,
-            S: payload
-          }
-        }
-      }
-
-    case "CHANGE_SEVEN_SEGMENT_LIGHTNESS":
-      return {
-        ...state,
-        sevenSegment: {
-          ...state.sevenSegment,
-          color: {
-            ...state.sevenSegment.color,
-            L: payload
-          }
-        }
-      }
-
-    case "SWITCH_MODE":
-      return {
-        ...state,
-        mode: payload
-      }
-
-    case "TOGGLE_HAMBURGER":
-      return {
-        ...state,
-        settings: {
-          ...state.settings,
-          open_state: !state.settings.open_state
-        }
-      }
-
-    case "SWITCH_COLON_ON_STATE":
-      return {
-        ...state,
-        colons: {
-          ...state.colons,
-          on_state: payload
-        }
-      }
-
-    case "TOGGLE_SHOW_SECONDS":
-      return {
-        ...state,
-        showSeconds: payload
-      }
-
-    case "SET_AMPM_STATE":
-      return {
-        ...state,
-        ampm: {
-          ...state.ampm,
-          ampm_state: payload
-        }
-      }
-
-    default:
-      return state
   }
 }
 
@@ -219,7 +110,6 @@ function App() {
     // Set the time
     const int = setInterval(() => {
       const now = new Date()
-      // const now = new Date("2020-06-01T00:00:00")
 
       const hours = now.getHours()
       const minutes = now.getMinutes()
@@ -330,6 +220,9 @@ export default App
   // TODO: Add shadows (glow) to segments
   // TODO: Add option to change language
   // TODO: Scale the app into React
+  // TODO: Add a logo to the project
+  // TODO: Make the transformed hamburger button more contrastive
+  // TODO: Add a readme file
   //============================================================
   // TODO: Add 24/12h option -- done
   // TODO: Handle the responsive -- done
