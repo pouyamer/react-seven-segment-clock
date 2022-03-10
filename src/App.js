@@ -31,7 +31,7 @@ const INITIAL_STATE = {
   ampm: {
     ampm_state: "AM" // AM or PM
   },
-  mode: "24H", // 24H or 12H
+  mode: "12H", // 24H or 12H
   colonsBlink: true, // if true, the colons will blink
   showSeconds: true, // if true, the seconds will be shown
   settings: {
@@ -45,13 +45,14 @@ const INITIAL_STATE = {
 }
 
 const reducer = (state, action) => {
-  switch (action.type) {
+  const { type, payload } = action
+  switch (type) {
     case "SET_TIME":
       return {
         ...state,
         sevenSegment: {
           ...state.sevenSegment,
-          shownNumbers: action.payload
+          shownNumbers: payload
         }
       }
 
@@ -60,7 +61,7 @@ const reducer = (state, action) => {
         ...state,
         colons: {
           ...state.colons,
-          willBlink: action.payload
+          willBlink: payload
         }
       }
 
@@ -69,7 +70,7 @@ const reducer = (state, action) => {
         ...state,
         settings: {
           ...state.settings,
-          opacity: action.payload
+          opacity: payload
         }
       }
 
@@ -80,7 +81,7 @@ const reducer = (state, action) => {
           ...state.sevenSegment,
           color: {
             ...state.sevenSegment.color,
-            H: action.payload
+            H: payload
           }
         }
       }
@@ -92,7 +93,7 @@ const reducer = (state, action) => {
           ...state.sevenSegment,
           color: {
             ...state.sevenSegment.color,
-            S: action.payload
+            S: payload
           }
         }
       }
@@ -104,7 +105,7 @@ const reducer = (state, action) => {
           ...state.sevenSegment,
           color: {
             ...state.sevenSegment.color,
-            L: action.payload
+            L: payload
           }
         }
       }
@@ -112,7 +113,7 @@ const reducer = (state, action) => {
     case "SWITCH_MODE":
       return {
         ...state,
-        mode: action.payload
+        mode: payload
       }
 
     case "TOGGLE_HAMBURGER":
@@ -129,14 +130,23 @@ const reducer = (state, action) => {
         ...state,
         colons: {
           ...state.colons,
-          on_state: action.payload
+          on_state: payload
         }
       }
 
     case "TOGGLE_SHOW_SECONDS":
       return {
         ...state,
-        showSeconds: action.payload
+        showSeconds: payload
+      }
+
+    case "SET_AMPM_STATE":
+      return {
+        ...state,
+        ampm: {
+          ...state.ampm,
+          ampm_state: payload
+        }
       }
 
     default:
@@ -167,9 +177,24 @@ function App() {
     state.sevenSegment.color.A_OFF
   )
 
+  const ampmDeterminer = hour24 => {
+    if (hour24 >= 0 && hour24 < 12) return "AM"
+    if (hour24 >= 12 && hour24 < 24) return "PM"
+  }
+
+  const to12Hours = hour => {
+    if (hour === 0) return `12`
+    if (hour > 0 && hour < 10) return ` ${hour}`
+    if (hour >= 10 && hour <= 12) return `${hour}`
+    if (hour > 12 && hour < 22) return ` ${hour - 12}`
+    if (hour >= 22) return `${hour - 12}`
+    return `${hour}`
+  }
+
+  const to2Digits = num => (num < 10 ? `0${num}` : num.toString())
+
   const toggleSettings = () => {
     dispatch({ type: "TOGGLE_HAMBURGER" })
-    console.log("clicked")
   }
 
   useEffect(() => {
@@ -193,25 +218,15 @@ function App() {
 
     // Set the time
     const int = setInterval(() => {
-      const to12Hours = (hour, mode) => {
-        if (mode === "12H") {
-          if (hour === 0) return 12
-          if (hour > 12) return hour - 12
-          if (hours < 10) return " " + hour
-          return hour
-        }
-        return hour
-      }
-
-      const to2Digits = num => (num < 10 ? `0${num}` : num.toString())
-
       const now = new Date()
+      // const now = new Date("2020-06-01T00:00:00")
+
       const hours = now.getHours()
       const minutes = now.getMinutes()
       const seconds = now.getSeconds()
 
       const hour24String = to2Digits(hours)
-      const hours12String = to12Hours(hours, state.mode).toString()
+      const hours12String = to12Hours(hours)
       const hourString = state.mode === "24H" ? hour24String : hours12String
 
       const minuteString = to2Digits(minutes)
@@ -227,6 +242,10 @@ function App() {
       ]
 
       dispatch({ type: "SET_TIME", payload: shownNumbers })
+      dispatch({
+        type: "SET_AMPM_STATE",
+        payload: ampmDeterminer(parseInt(hour24String))
+      })
     }, 1)
     return () => {
       clearInterval(int)
