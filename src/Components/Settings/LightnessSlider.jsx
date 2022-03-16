@@ -1,10 +1,10 @@
 import React from "react"
 
-const LightnessSlider = ({ L, changeSevenSegmentLightness }) => {
+const LightnessSlider = ({ L, changeSevenSegmentLightness, text }) => {
   return (
     <>
       <br />
-      <p>Lightness</p>
+      <p>{text}</p>
 
       <input
         type="range"

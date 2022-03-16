@@ -2,6 +2,12 @@ const reducer = (state, action) => {
   const { type, payload } = action
 
   switch (type) {
+    case "CHANGE_LANGUAGE":
+      return {
+        ...state,
+        language: payload
+      }
+
     case "SET_TIME":
       return {
         ...state,

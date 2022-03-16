@@ -1,9 +1,9 @@
 import React from "react"
 
-const HueSlider = ({ changeSevenSegmentHue, H }) => {
+const HueSlider = ({ changeSevenSegmentHue, H, text }) => {
   return (
     <>
-      <p>Hue</p>
+      <p>{text}</p>
       <input
         type="range"
         name="hue"

@@ -1,10 +1,10 @@
 import React from "react"
 
-const SettingsOpacity = ({ opacity, changeSettingsOpacity }) => {
+const SettingsOpacity = ({ opacity, changeSettingsOpacity, partLanguage }) => {
   return (
     <div className="settings-section ss-opacity">
-      <h2>Settings Opacity:</h2>
-      <label htmlFor="opacity">Opacity</label>
+      <h2>{partLanguage.label}:</h2>
+      <label htmlFor="opacity">{partLanguage.range}</label>
       <input
         type="range"
         name="opacity"

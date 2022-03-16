@@ -1,9 +1,13 @@
 import React from "react"
 
-const ShowSecondsChange = ({ showSeconds, toggleShowSeconds }) => {
+const ShowSecondsChange = ({
+  showSeconds,
+  toggleShowSeconds,
+  partLanguage
+}) => {
   return (
     <div className="settings-section ss-seconds">
-      <h2>Show Seconds:</h2>
+      <h2>{partLanguage.label}:</h2>
       <input
         type="checkbox"
         name="seconds"
@@ -11,7 +15,7 @@ const ShowSecondsChange = ({ showSeconds, toggleShowSeconds }) => {
         checked={showSeconds}
         onChange={e => toggleShowSeconds(e.target.checked)}
       />
-      <label htmlFor="seconds">Show</label>
+      <label htmlFor="seconds">{partLanguage.checkbox}</label>
     </div>
   )
 }

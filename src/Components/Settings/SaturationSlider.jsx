@@ -1,10 +1,10 @@
 import React from "react"
 
-const SaturationSlider = ({ S, changeSevenSegmentSaturation }) => {
+const SaturationSlider = ({ S, changeSevenSegmentSaturation, text }) => {
   return (
     <>
       <br />
-      <p>Saturation</p>
+      <p>{text}</p>
 
       <input
         type="range"

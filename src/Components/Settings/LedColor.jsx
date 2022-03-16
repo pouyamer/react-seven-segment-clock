@@ -9,19 +9,26 @@ const LedColor = ({
   L,
   changeSevenSegmentHue,
   changeSevenSegmentSaturation,
-  changeSevenSegmentLightness
+  changeSevenSegmentLightness,
+  partLanguage
 }) => {
   return (
     <div className="settings-section ss-hue">
-      <h2>LED Color:</h2>
-      <HueSlider H={H} changeSevenSegmentHue={changeSevenSegmentHue} />
+      <h2>{partLanguage.label}:</h2>
+      <HueSlider
+        H={H}
+        changeSevenSegmentHue={changeSevenSegmentHue}
+        text={partLanguage.ranges[0]}
+      />
       <SaturationSlider
         S={S}
         changeSevenSegmentSaturation={changeSevenSegmentSaturation}
+        text={partLanguage.ranges[1]}
       />
       <LightnessSlider
         L={L}
         changeSevenSegmentLightness={changeSevenSegmentLightness}
+        text={partLanguage.ranges[2]}
       />
     </div>
   )

@@ -12,6 +12,7 @@ import Settings from "./Components/Settings"
 const hslaStringify = (H, S, L, A = 1) => `hsla(${H}, ${S}%, ${L}%, ${A})`
 
 const INITIAL_STATE = {
+  language: "en-US",
   sevenSegment: {
     size: {
       width: 192,
@@ -90,6 +91,7 @@ function App() {
 
   useEffect(() => {
     // Blink the colons
+
     let miliseconds = new Date().getMilliseconds()
     const blinkInterval = setInterval(() => {
       if (state.colons.willBlink) {
